@@ -6,3 +6,6 @@ ColumnLimit: 120
 SpaceBeforeCpp11BracedList: true
 SpaceBeforeCtorInitializerColon: true
 SpaceBeforeInheritanceColon: true
+AccessModifierOffset: -4
+AllowShortFunctionsOnASingleLine: Empty
+SeparateDefinitionBlocks: Always

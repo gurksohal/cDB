@@ -7,7 +7,9 @@ Checks: "*,
         -fuchsia-*,
         -llvm*,
         -zircon-*,
-        -readability-identifier-length
+        -readability-identifier-length,
+        -modernize-use-nodiscard,
+        -cppcoreguidelines-pro-type-reinterpret-cast
 "
 
 WarningsAsErrors: '*'
