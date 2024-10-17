@@ -30,8 +30,9 @@ auto Page::getString(int offset) const -> std::string {
     auto bytes = getBytes(offset);
     std::string res;
     res.reserve(bytes.size());
+    int i = 0;
     for (auto& b : bytes) {
-        res.push_back(std::to_integer<char>(b));
+        res[i++] = std::to_integer<char>(b);
     }
     return res;
 }
