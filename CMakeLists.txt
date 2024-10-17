@@ -29,7 +29,7 @@ target_link_libraries(cDB_main cDB_lib)
 
 # All tests
 add_executable(cDB_tests
-        test/file/FileTest.cpp
+        test/FileTest.cpp
 )
 
 target_link_libraries(cDB_tests

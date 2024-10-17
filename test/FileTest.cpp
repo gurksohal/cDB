@@ -1,7 +1,7 @@
 //
 // Created by G on 10/16/2024.
 //
-#include "../../src/file/FileManager.h"
+#include "../src/file/FileManager.h"
 #include "gtest/gtest.h"
 
 TEST(file, file_test) {
