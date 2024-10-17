@@ -4,7 +4,9 @@
 
 #include "BlockId.h"
 
-BlockId::BlockId(std::string& filename, int block_num) : file_name(filename), block_num(block_num) {}
+#include <utility>
+
+BlockId::BlockId(std::string filename, int block_num) : file_name(std::move(filename)), block_num(block_num) {}
 
 auto BlockId::filename() const -> std::string_view {
     return file_name;

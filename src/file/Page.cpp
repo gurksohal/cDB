@@ -46,7 +46,7 @@ auto Page::setBytes(int offset, std::vector<std::byte>& val) -> void {
     std::copy(val.begin(), val.end(), start);
 }
 
-auto Page::setString(int offset, std::string& val) -> void {
+auto Page::setString(int offset, const std::string& val) -> void {
     std::vector<std::byte> bytes(val.size());
     int i = 0;
     for (char const c : val) {

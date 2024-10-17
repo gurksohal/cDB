@@ -10,7 +10,7 @@
 
 class BlockId {
 public:
-    BlockId(std::string& filename, int block_num);
+    BlockId(std::string filename, int block_num);
     auto filename() const -> std::string_view;
     auto blockNumber() const -> int;
     auto operator==(const BlockId& rhs) const -> bool;

@@ -36,7 +36,7 @@ auto FileManager::read(const BlockId& block_id, Page& page) -> void {
     page.replaceData(bytes);
 }
 
-auto FileManager::write(BlockId& block_id, Page& page) -> void {
+auto FileManager::write(const BlockId& block_id, Page& page) -> void {
     const std::unique_lock<std::mutex> lock(mutex_lock);
 
     auto& open_file = getFile(block_id.filename());

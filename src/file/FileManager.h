@@ -17,7 +17,7 @@ class FileManager {
 public:
     FileManager(std::filesystem::path& dir_path, int block_size);
     auto read(const BlockId& block_id, Page& page) -> void;
-    auto write(BlockId& block_id, Page& page) -> void;
+    auto write(const BlockId& block_id, Page& page) -> void;
     auto append(std::string& filename) -> BlockId;
     auto isNew() const -> bool;
     auto length(std::string& filename) -> int;
