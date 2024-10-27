@@ -20,7 +20,7 @@ public:
     auto write(const BlockId& block_id, Page& page) -> void;
     auto append(std::string& filename) -> BlockId;
     auto isNew() const -> bool;
-    auto length(std::string& filename) -> int;
+    auto length(const std::string& filename) -> int;
     auto blockSize() const -> int;
 
 private:

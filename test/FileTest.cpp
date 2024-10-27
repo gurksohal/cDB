@@ -23,4 +23,8 @@ TEST(file, file_test) {
     fm.read(block_id, p2);
     EXPECT_EQ(p2.getInt(pos2), 345);
     EXPECT_EQ(p2.getString(pos1), "abcdefghijklm");
+
+    // clean up files
+    auto r = std::remove("filetest/testfile");
+    EXPECT_EQ(r, 0);
 }

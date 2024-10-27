@@ -62,7 +62,7 @@ auto FileManager::isNew() const -> bool {
     return is_new;
 }
 
-auto FileManager::length(std::string& filename) -> int {
+auto FileManager::length(const std::string& filename) -> int {
     auto dir_file_path = dir_path / std::filesystem::path {filename};
     int const size = std::max(0, static_cast<int>(std::filesystem::file_size(dir_file_path)));
     auto new_index = size / block_size;

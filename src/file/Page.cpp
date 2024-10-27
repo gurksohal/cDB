@@ -29,10 +29,8 @@ auto Page::getBytes(int offset) const -> std::vector<std::byte> {
 auto Page::getString(int offset) const -> std::string {
     auto bytes = getBytes(offset);
     std::string res;
-    res.reserve(bytes.size());
-    int i = 0;
     for (auto& b : bytes) {
-        res[i++] = std::to_integer<char>(b);
+        res += std::to_integer<char>(b);
     }
     return res;
 }
