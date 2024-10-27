@@ -33,8 +33,8 @@ auto FileManager::read(const BlockId& block_id, Page& page) -> void {
     open_file.seekg(page_offset, std::ios::beg);
     std::vector<std::byte> bytes(block_size);
     open_file.read(reinterpret_cast<char*>(bytes.data()), block_size);
-    if (open_file.bad()) {
-        throw std::runtime_error("bad bit set while reading");
+    if (!open_file.good()) {
+        throw std::runtime_error("error while reading");
     }
     page.replaceData(bytes);
 }
@@ -43,10 +43,10 @@ auto FileManager::write(const BlockId& block_id, Page& page) -> void {
     const std::unique_lock<std::mutex> lock(mutex_lock);
     auto& open_file = getFile(block_id.filename());
     auto page_offset = block_id.blockNumber() * block_size;
-    open_file.seekg(page_offset, std::ios::beg);
+    open_file.seekp(page_offset, std::ios::beg);
     open_file.write(reinterpret_cast<const char*>(page.getData().data()), block_size);
-    if (open_file.bad()) {
-        throw std::runtime_error("bad bit set while writing");
+    if (!open_file.good()) {
+        throw std::runtime_error("error while writing");
     }
 }
 
@@ -58,10 +58,10 @@ auto FileManager::append(std::string& filename) -> BlockId {
     BlockId block_id {filename, new_block_num};
     auto page_offset = block_id.blockNumber() * block_size;
     std::vector<std::byte> bytes(block_size);
-    open_file.seekg(page_offset, std::ios::beg);
+    open_file.seekp(page_offset, std::ios::beg);
     open_file.write(reinterpret_cast<const char*>(bytes.data()), block_size);
-    if (open_file.bad()) {
-        throw std::runtime_error("bad bit set while appending");
+    if (!open_file.good()) {
+        throw std::runtime_error("error while appending");
     }
     return block_id;
 }

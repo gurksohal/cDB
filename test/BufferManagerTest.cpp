@@ -8,6 +8,12 @@
 namespace {
 auto makeFM() -> FileManager {
     std::filesystem::path path = std::filesystem::path {"bufferfile"};
+    FileManager fm {path, 400};
+    for (int i = 0; i < 10; i++) {
+        BlockId blk {"testfile", i};
+        Page p(fm.blockSize());
+        fm.write(blk, p);
+    }
     return {path, 400};
 }
 
@@ -84,6 +90,9 @@ TEST(buffer, buffer_test) {
 
     blk = {"testfile", 1};
     buff2 = bp.pin(blk);
+    Page* p2 = buff1.contents();
+    EXPECT_EQ(p2->getInt(0), n + 1);
+
     cleanUp();
 }
 
