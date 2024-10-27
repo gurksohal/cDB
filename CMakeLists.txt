@@ -24,6 +24,10 @@ add_library(cDB_lib
         src/log/LogManager.h
         src/log/LogIterator.cpp
         src/log/LogIterator.h
+        src/buffer/Buffer.cpp
+        src/buffer/Buffer.h
+        src/buffer/BufferManager.cpp
+        src/buffer/BufferManager.h
 )
 
 # single main file for now, scratchpad
@@ -35,6 +39,7 @@ target_link_libraries(cDB_main cDB_lib)
 add_executable(cDB_tests
         test/FileTest.cpp
         test/LogTest.cpp
+        test/BufferManagerTest.cpp
 )
 
 target_link_libraries(cDB_tests

@@ -33,16 +33,21 @@ auto FileManager::read(const BlockId& block_id, Page& page) -> void {
     open_file.seekg(page_offset, std::ios::beg);
     std::vector<std::byte> bytes(block_size);
     open_file.read(reinterpret_cast<char*>(bytes.data()), block_size);
+    if (open_file.bad()) {
+        throw std::runtime_error("bad bit set while reading");
+    }
     page.replaceData(bytes);
 }
 
 auto FileManager::write(const BlockId& block_id, Page& page) -> void {
     const std::unique_lock<std::mutex> lock(mutex_lock);
-
     auto& open_file = getFile(block_id.filename());
     auto page_offset = block_id.blockNumber() * block_size;
     open_file.seekg(page_offset, std::ios::beg);
     open_file.write(reinterpret_cast<const char*>(page.getData().data()), block_size);
+    if (open_file.bad()) {
+        throw std::runtime_error("bad bit set while writing");
+    }
 }
 
 auto FileManager::append(std::string& filename) -> BlockId {
@@ -55,6 +60,9 @@ auto FileManager::append(std::string& filename) -> BlockId {
     std::vector<std::byte> bytes(block_size);
     open_file.seekg(page_offset, std::ios::beg);
     open_file.write(reinterpret_cast<const char*>(bytes.data()), block_size);
+    if (open_file.bad()) {
+        throw std::runtime_error("bad bit set while appending");
+    }
     return block_id;
 }
 
@@ -82,8 +90,9 @@ auto FileManager::getFile(const std::string_view filename) -> std::fstream& {
         }
     }
 
-    std::fstream ret {dir_file_path.string(), std::ios::binary | std::ios::in | std::ios::out};
+    std::fstream ret(dir_file_path.string(), std::ios::binary | std::ios::in | std::ios::out);
     if (!ret.is_open()) {
+        ret.clear();
         ret.open(dir_file_path.string(), std::ios::binary | std::ios::in | std::ios::out | std::ios::trunc);
         ret.close();
         ret.open(dir_file_path.string(), std::ios::binary | std::ios::in | std::ios::out);
@@ -94,6 +103,5 @@ auto FileManager::getFile(const std::string_view filename) -> std::fstream& {
     }
 
     open_files[dir_file_path] = std::move(ret);
-    std::fstream& f = open_files[dir_file_path];
-    return f;
+    return open_files[dir_file_path];
 }

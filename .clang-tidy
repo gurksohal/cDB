@@ -11,7 +11,8 @@ Checks: "*,
         -modernize-use-nodiscard,
         -cppcoreguidelines-pro-type-reinterpret-cast,
         -cppcoreguidelines-avoid-magic-numbers,
-        -readability-magic-numbers
+        -readability-magic-numbers,
+        -bugprone-easily-swappable-parameters
 "
 
 WarningsAsErrors: '*'

@@ -57,4 +57,6 @@ TEST(log, log_test) {
     // clean up files
     auto r = std::remove("logtest/logtestfile");
     EXPECT_EQ(r, 0);
+    r = std::remove("logtest");
+    EXPECT_EQ(r, 0);
 }

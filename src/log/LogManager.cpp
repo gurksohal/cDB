@@ -7,10 +7,10 @@
 LogManager::LogManager(FileManager *fm, const std::string &path)
     : file_manager(fm),
       log_path(path),
-      latest_lsm(0),
-      last_saved_lsm(0),
       page(file_manager->blockSize()),
-      block_id(log_path, 0) {
+      block_id(log_path, 0),
+      latest_lsm(0),
+      last_saved_lsm(0) {
     auto log_size = file_manager->length(path);
     if (log_size == 0) {
         block_id = appendNewBlock();

@@ -27,4 +27,6 @@ TEST(file, file_test) {
     // clean up files
     auto r = std::remove("filetest/testfile");
     EXPECT_EQ(r, 0);
+    r = std::remove("filetest");
+    EXPECT_EQ(r, 0);
 }
