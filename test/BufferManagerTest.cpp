@@ -10,7 +10,7 @@ auto makeFM() -> FileManager {
     std::filesystem::path path = std::filesystem::path {"bufferfile"};
     FileManager fm {path, 400};
     for (int i = 0; i < 10; i++) {
-        BlockId blk {"testfile", i};
+        BlockId const blk {"testfile", i};
         Page p(fm.blockSize());
         fm.write(blk, p);
     }
@@ -82,9 +82,9 @@ TEST(buffer, buffer_test) {
     blk = {"testfile", 2};
     auto& buff2 = bp.pin(blk);
     blk = {"testfile", 3};
-    auto& buff3 = bp.pin(blk);
+    bp.pin(blk);
     blk = {"testfile", 4};
-    auto& buff4 = bp.pin(blk);
+    bp.pin(blk);
 
     bp.unpin(buff2);
 
@@ -116,6 +116,6 @@ TEST(buffermgr, buffermgr_test) {
     buffers.push_back(&bp.pin(b1));
 
     EXPECT_EQ(bp.available(), 0);
-    EXPECT_ANY_THROW(bp.pin(b3));
+    EXPECT_ANY_THROW(bp.pin(b3));  // 10 sec delay
     cleanUp();
 }
