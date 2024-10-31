@@ -72,4 +72,5 @@ TEST(tx, tx_test) {
     auto post_roll = tx4.getInt(blk, 80);
     EXPECT_EQ(post_roll, new_i_val);
     tx4.commit();
+    cleanUp();
 }
