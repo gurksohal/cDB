@@ -1,4 +1,3 @@
-5. Transactions
 6. Record Management
 7. Metadata Management
 8. Query Processing
