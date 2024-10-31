@@ -28,6 +28,18 @@ add_library(cDB_lib
         src/buffer/Buffer.h
         src/buffer/BufferManager.cpp
         src/buffer/BufferManager.h
+        src/tx/BufferList.cpp
+        src/tx/BufferList.h
+        src/tx/Transaction.cpp
+        src/tx/Transaction.h
+        src/tx/concurrency/ConcurrencyManager.cpp
+        src/tx/concurrency/ConcurrencyManager.h
+        src/tx/concurrency/LockTable.cpp
+        src/tx/concurrency/LockTable.h
+        src/tx/recovery/LogRecord.cpp
+        src/tx/recovery/LogRecord.h
+        src/tx/recovery/RecoveryManager.cpp
+        src/tx/recovery/RecoveryManager.h
 )
 
 # single main file for now, scratchpad
@@ -40,6 +52,8 @@ add_executable(cDB_tests
         test/FileTest.cpp
         test/LogTest.cpp
         test/BufferManagerTest.cpp
+        test/ConcurrencyTest.cpp
+        test/TxTest.cpp
 )
 
 target_link_libraries(cDB_tests

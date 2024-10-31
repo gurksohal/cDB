@@ -15,6 +15,11 @@ public:
     auto blockNumber() const -> int;
     auto operator==(const BlockId& rhs) const -> bool;
     auto operator!=(const BlockId& rhs) const -> bool;
+    auto operator<(const BlockId& rhs) const -> bool;
+    auto operator>(const BlockId& rhs) const -> bool;
+    auto operator<=(const BlockId& rhs) const -> bool;
+    auto operator>=(const BlockId& rhs) const -> bool;
+    auto toString() -> std::string;
     friend auto operator<<(std::ostream& os, const BlockId& id) -> std::ostream&;
 
 private:
