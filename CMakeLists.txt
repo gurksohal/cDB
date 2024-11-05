@@ -64,6 +64,7 @@ add_executable(cDB_tests
         test/BufferManagerTest.cpp
         test/ConcurrencyTest.cpp
         test/TxTest.cpp
+        test/RecordTest.cpp
 )
 
 target_link_libraries(cDB_tests
