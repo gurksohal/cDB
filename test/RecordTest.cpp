@@ -67,9 +67,6 @@ TEST(table_scan, table_scan_test) {
     std::vector<std::pair<int, std::string>> above;
     std::vector<std::pair<int, std::string>> below;
     for (int i = 0; i < 50; i++) {
-        if (i == 49) {
-            std::cout << "break\n";
-        }
         ts.insert();
         int const n = dis(gen);
         ts.setInt("A", n);
