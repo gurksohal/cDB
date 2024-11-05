@@ -40,6 +40,16 @@ add_library(cDB_lib
         src/tx/recovery/LogRecord.h
         src/tx/recovery/RecoveryManager.cpp
         src/tx/recovery/RecoveryManager.h
+        src/record/Layout.cpp
+        src/record/Layout.h
+        src/record/RID.cpp
+        src/record/RID.h
+        src/record/RecordPage.cpp
+        src/record/RecordPage.h
+        src/record/Schema.cpp
+        src/record/Schema.h
+        src/record/TableScan.cpp
+        src/record/TableScan.h
 )
 
 # single main file for now, scratchpad
