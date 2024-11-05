@@ -1,4 +1,3 @@
-6. Record Management
 7. Metadata Management
 8. Query Processing (update TableScan [Constant])
 9. Parsing
