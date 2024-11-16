@@ -7,7 +7,7 @@
 #include "LogRecord.h"
 
 RecoveryManager::RecoveryManager(Transaction *tx, int tx_num, LogManager *lm, BufferManager *bm)
-    : tx(tx), tx_num(tx_num), lm(lm), bm(bm) {
+    : lm(lm), bm(bm), tx(tx), tx_num(tx_num) {
     StartRecord::writeToLog(*lm, tx_num);
 }
 

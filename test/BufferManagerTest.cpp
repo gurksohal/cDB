@@ -38,7 +38,7 @@ auto getBlockID(int block) -> BlockId {
 }
 }  // namespace
 
-TEST(bufferfile, bufferfile_test) {
+TEST(buffermgr, bufferfile_test) {
     auto fm = makeFM();
     auto lm = makeLM(fm);
     BufferManager bp {&fm, &lm, 8};
@@ -64,7 +64,7 @@ TEST(bufferfile, bufferfile_test) {
     cleanUp();
 }
 
-TEST(buffer, buffer_test) {
+TEST(buffermgr, buffer_test) {
     auto fm = makeFM();
     auto lm = makeLM(fm);
     BufferManager bp {&fm, &lm, 3};

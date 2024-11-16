@@ -7,7 +7,7 @@ int Transaction::next_tx_num = 0;
 std::mutex Transaction::mutex;
 
 Transaction::Transaction(FileManager *fm, LogManager *lm, BufferManager *bm)
-    : fm(fm), bm(bm), tx_num(Transaction::nextTxNumber()), recovery_manager(this, -1, lm, bm), my_buffers(bm) {
+    : recovery_manager(this, -1, lm, bm), bm(bm), fm(fm), tx_num(Transaction::nextTxNumber()), my_buffers(bm) {
     recovery_manager = RecoveryManager(this, tx_num, lm, bm);
 }
 

@@ -14,7 +14,7 @@ class RecordPage {
 public:
     enum State : std::uint8_t { EMPTY = 0, USED = 1 };
 
-    RecordPage(Transaction* tx, BlockId blk, Layout* layout);
+    RecordPage(Transaction* tx, BlockId blk, Layout layout);
     auto getInt(int slot, const std::string& fld_name) -> int;
     auto getString(int slot, const std::string& fld_name) -> std::string;
     auto setInt(int slot, const std::string& fld_name, int val) -> void;
@@ -32,7 +32,7 @@ private:
     auto offset(int slot) -> int;
     Transaction* tx;
     BlockId blk;
-    Layout* layout;
+    Layout layout;
 };
 
 #endif  // CDB_RECORDPAGE_H

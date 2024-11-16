@@ -30,8 +30,12 @@ auto operator<<(std::ostream& os, const BlockId& id) -> std::ostream& {
 }
 
 auto BlockId::operator<(const BlockId& rhs) const -> bool {
-    if (file_name < rhs.file_name) return true;
-    if (rhs.file_name < file_name) return false;
+    if (file_name < rhs.file_name) {
+        return true;
+    }
+    if (rhs.file_name < file_name) {
+        return false;
+    }
     return block_num < rhs.block_num;
 }
 

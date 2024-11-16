@@ -4,8 +4,6 @@
 
 #include "BufferManager.h"
 
-#include <iostream>
-
 BufferManager::BufferManager(FileManager *fm, LogManager *lm, int buffers)
     : buffer_pool(buffers, {fm, lm}), num_available(buffers) {}
 

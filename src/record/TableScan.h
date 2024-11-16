@@ -12,7 +12,7 @@
 
 class TableScan {  // TODO: extend updateScan
 public:
-    TableScan(Transaction* tx, const std::string& tbl_name, Layout* layout);
+    TableScan(Transaction* tx, const std::string& tbl_name, const Layout& layout);
     auto beforeFirst() -> void;
     auto next() -> bool;
     auto getInt(const std::string& fld_name) -> int;
@@ -33,7 +33,7 @@ private:
     auto moveToNewBlock() -> void;
     auto atLastBlock() -> bool;
     Transaction* tx;
-    Layout* layout;
+    Layout layout;
     RecordPage rp;
     std::string filename;
     int current_slot;

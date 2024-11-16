@@ -6,27 +6,28 @@
 
 #include <utility>
 
-RecordPage::RecordPage(Transaction *tx, BlockId blk, Layout *layout) : tx(tx), blk(std::move(blk)), layout(layout) {
+RecordPage::RecordPage(Transaction *tx, BlockId blk, Layout layout)
+    : tx(tx), blk(std::move(blk)), layout(std::move(layout)) {
     tx->pin(this->blk);
 }
 
 auto RecordPage::getInt(int slot, const std::string &fld_name) -> int {
-    int const fld_pos = offset(slot) + layout->offset(fld_name);
+    int const fld_pos = offset(slot) + layout.offset(fld_name);
     return tx->getInt(blk, fld_pos);
 }
 
 auto RecordPage::getString(int slot, const std::string &fld_name) -> std::string {
-    int const fld_pos = offset(slot) + layout->offset(fld_name);
+    int const fld_pos = offset(slot) + layout.offset(fld_name);
     return tx->getString(blk, fld_pos);
 }
 
 auto RecordPage::setInt(int slot, const std::string &fld_name, int val) -> void {
-    int const fld_pos = offset(slot) + layout->offset(fld_name);
+    int const fld_pos = offset(slot) + layout.offset(fld_name);
     tx->setInt(blk, fld_pos, val, true);
 }
 
 auto RecordPage::setString(int slot, const std::string &fld_name, const std::string &val) -> void {
-    int const fld_pos = offset(slot) + layout->offset(fld_name);
+    int const fld_pos = offset(slot) + layout.offset(fld_name);
     tx->setString(blk, fld_pos, val, true);
 }
 
@@ -38,9 +39,9 @@ auto RecordPage::format() -> void {
     int slot = 0;
     while (isValidSlot(slot)) {
         tx->setInt(blk, offset(slot), EMPTY, false);
-        const auto &sch = layout->schema();
+        const auto &sch = layout.schema();
         for (const auto &name : sch.fields()) {
-            int const fld_pos = offset(slot) + layout->offset(name);
+            int const fld_pos = offset(slot) + layout.offset(name);
             if (sch.type(name) == Schema::INTEGER) {
                 tx->setInt(blk, fld_pos, 0, false);
             } else {
@@ -87,5 +88,5 @@ auto RecordPage::isValidSlot(int slot) -> bool {
 }
 
 auto RecordPage::offset(int slot) -> int {
-    return slot * layout->slotSize();
+    return slot * layout.slotSize();
 }

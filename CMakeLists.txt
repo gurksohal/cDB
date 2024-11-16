@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 project(cDB)
 
 set(CMAKE_CXX_STANDARD 20)
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fsanitize=address,undefined -g")
 include(FetchContent)
 FetchContent_Declare(
         googletest
@@ -50,6 +51,20 @@ add_library(cDB_lib
         src/record/Schema.h
         src/record/TableScan.cpp
         src/record/TableScan.h
+        src/metadata/IndexInfo.cpp
+        src/metadata/IndexInfo.h
+        src/metadata/IndexMgr.cpp
+        src/metadata/IndexMgr.h
+        src/metadata/MetadataMgr.cpp
+        src/metadata/MetadataMgr.h
+        src/metadata/StatInfo.cpp
+        src/metadata/StatInfo.h
+        src/metadata/StatMgr.cpp
+        src/metadata/StatMgr.h
+        src/metadata/TableMgr.cpp
+        src/metadata/TableMgr.h
+        src/metadata/ViewMgr.cpp
+        src/metadata/ViewMgr.h
 )
 
 # single main file for now, scratchpad
@@ -65,6 +80,7 @@ add_executable(cDB_tests
         test/ConcurrencyTest.cpp
         test/TxTest.cpp
         test/RecordTest.cpp
+        test/MetadataTest.cpp
 )
 
 target_link_libraries(cDB_tests

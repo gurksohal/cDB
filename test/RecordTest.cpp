@@ -36,7 +36,7 @@ auto cleanUp() -> void {
 }
 }  // namespace
 
-TEST(layout, layout_test) {
+TEST(record, layout_test) {
     Schema sch;
     sch.addIntField("A");
     sch.addStringField("B", 9);
@@ -48,7 +48,7 @@ TEST(layout, layout_test) {
     EXPECT_EQ(layout.offset("B"), 8);
 }
 
-TEST(table_scan, table_scan_test) {
+TEST(record, table_scan_test) {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dis(0, 50);
@@ -62,8 +62,8 @@ TEST(table_scan, table_scan_test) {
     sch.addIntField("A");
     sch.addStringField("B", 9);
 
-    Layout layout {sch};
-    TableScan ts {&tx, "testfile", &layout};
+    Layout const layout {sch};
+    TableScan ts {&tx, "testfile", layout};
     std::vector<std::pair<int, std::string>> above;
     std::vector<std::pair<int, std::string>> below;
     for (int i = 0; i < 50; i++) {
@@ -120,11 +120,11 @@ TEST(record, record_test) {  // NOLINT
     sch.addIntField("A");
     sch.addStringField("B", 9);
 
-    Layout layout {sch};
+    Layout const layout {sch};
     BlockId blk = tx.append(filename);
     tx.pin(blk);
 
-    RecordPage rp(&tx, blk, &layout);
+    RecordPage rp(&tx, blk, layout);
     rp.format();
 
     int slot = rp.insertAfter(-1);

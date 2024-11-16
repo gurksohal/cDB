@@ -9,17 +9,18 @@
 
 class Layout {
 public:
-    explicit Layout(Schema& schema);
-    explicit Layout(Schema& schema, const std::unordered_map<std::string, int>& offsets, int slot_size);
-    auto schema() -> const Schema&;
+    Layout() = default;
+    explicit Layout(const Schema& schema);
+    explicit Layout(Schema schema, const std::unordered_map<std::string, int>& offsets, int slot_size);
+    auto schema() -> Schema;
     auto offset(const std::string& fld_name) -> int;
     auto slotSize() const -> int;
 
 private:
     auto lengthInBytes(const std::string& fld_name) -> int;
-    Schema* schema_m;
+    Schema schema_m;
     std::unordered_map<std::string, int> offsets;
-    int slot_size;
+    int slot_size {};
 };
 
 #endif  // CDB_LAYOUT_H

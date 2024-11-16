@@ -4,7 +4,7 @@
 
 #include "TableScan.h"
 
-TableScan::TableScan(Transaction *tx, const std::string &tbl_name, Layout *layout)
+TableScan::TableScan(Transaction *tx, const std::string &tbl_name, const Layout &layout)
     : tx(tx), layout(layout), rp(tx, {"", -1}, layout), current_slot(0) {
     filename = tbl_name + ".tbl";
     if (tx->size(filename) == 0) {
@@ -46,7 +46,7 @@ auto TableScan::getVal(const std::string &fld_name) -> void {
 }
 
 auto TableScan::hasField(const std::string &fld_name) -> bool {
-    return layout->schema().hasField(fld_name);
+    return layout.schema().hasField(fld_name);
 }
 
 auto TableScan::close() -> void {

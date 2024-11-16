@@ -104,7 +104,6 @@ auto RollbackRecord::undo(Transaction& tx) -> void {}
 
 auto RollbackRecord::toString() -> std::string {
     return "<ROLLBACK " + std::to_string(tx_num) + ">";
-    ;
 }
 
 auto RollbackRecord::writeToLog(LogManager& lm, int tx) -> int {
