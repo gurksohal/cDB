@@ -65,6 +65,22 @@ add_library(cDB_lib
         src/metadata/TableMgr.h
         src/metadata/ViewMgr.cpp
         src/metadata/ViewMgr.h
+        src/query/Constant.cpp
+        src/query/Constant.h
+        src/query/Expression.cpp
+        src/query/Expression.h
+        src/query/Predicate.cpp
+        src/query/Predicate.h
+        src/query/ProductScan.cpp
+        src/query/ProductScan.h
+        src/query/ProjectScan.cpp
+        src/query/ProjectScan.h
+        src/query/Scan.h
+        src/query/SelectScan.cpp
+        src/query/SelectScan.h
+        src/query/Term.cpp
+        src/query/Term.h
+        src/query/UpdateScan.h
 )
 
 # single main file for now, scratchpad
@@ -81,6 +97,7 @@ add_executable(cDB_tests
         test/TxTest.cpp
         test/RecordTest.cpp
         test/MetadataTest.cpp
+        test/QueryTest.cpp
 )
 
 target_link_libraries(cDB_tests

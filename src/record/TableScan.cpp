@@ -38,11 +38,11 @@ auto TableScan::getString(const std::string &fld_name) -> std::string {
     return rp.getString(current_slot, fld_name);
 }
 
-auto TableScan::getVal(const std::string &fld_name) -> void {
-    // TODO: Implement
-    auto s = fld_name;
-    s += "1" + filename;
-    throw std::runtime_error("to implement after query: " + s);
+auto TableScan::getVal(const std::string &fld_name) -> Constant {
+    if (layout.schema().type(fld_name) == Schema::INTEGER) {
+        return Constant(getInt(fld_name));
+    }
+    return Constant(getString(fld_name));
 }
 
 auto TableScan::hasField(const std::string &fld_name) -> bool {
@@ -63,11 +63,12 @@ auto TableScan::setString(const std::string &fld_name, const std::string &val) -
     rp.setString(current_slot, fld_name, val);
 }
 
-auto TableScan::setVal(const std::string &fld_name, int val) -> void {
-    // TODO: Implement
-    auto s = fld_name;
-    s += "1" + filename + std::to_string(val);
-    throw std::runtime_error("to implement after query: " + s);
+auto TableScan::setVal(const std::string &fld_name, Constant val) -> void {
+    if (layout.schema().type(fld_name) == Schema::INTEGER) {
+        setInt(fld_name, val.asInt());
+    } else {
+        setString(fld_name, val.asString());
+    }
 }
 
 auto TableScan::insert() -> void {
