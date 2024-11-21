@@ -3,7 +3,6 @@
 //
 #include "../src/buffer/BufferManager.h"
 #include "../src/metadata/MetadataMgr.h"
-#include "../src/metadata/TableMgr.h"
 #include "../src/record/TableScan.h"
 #include "gtest/gtest.h"
 

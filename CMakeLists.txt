@@ -81,6 +81,19 @@ add_library(cDB_lib
         src/query/Term.cpp
         src/query/Term.h
         src/query/UpdateScan.h
+        src/parse/CreateIndexData.h
+        src/parse/CreateTableData.h
+        src/parse/CreateViewData.h
+        src/parse/QueryData.cpp
+        src/parse/QueryData.h
+        src/parse/DeletaData.h
+        src/parse/InsertData.h
+        src/parse/Lexer.cpp
+        src/parse/Lexer.h
+        src/parse/ModifyData.h
+        src/parse/Parser.cpp
+        src/parse/Parser.h
+        src/parse/PredParser.h
 )
 
 # single main file for now, scratchpad
@@ -98,6 +111,7 @@ add_executable(cDB_tests
         test/RecordTest.cpp
         test/MetadataTest.cpp
         test/QueryTest.cpp
+        test/ParseTest.cpp
 )
 
 target_link_libraries(cDB_tests

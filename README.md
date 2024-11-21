@@ -1,4 +1,3 @@
-9. Parsing
 10. Planning
 11. xxxxxxxxx
 12. Indexing (Update IndexInfo metadata)
