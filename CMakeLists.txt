@@ -133,6 +133,7 @@ add_executable(cDB_tests
         test/MetadataTest.cpp
         test/QueryTest.cpp
         test/ParseTest.cpp
+        test/PlanTest.cpp
 )
 
 target_link_libraries(cDB_tests
