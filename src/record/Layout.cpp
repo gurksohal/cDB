@@ -8,9 +8,9 @@
 
 #include "../file/Page.h"
 
-Layout::Layout(const Schema& schema) : schema_m(schema) {
+Layout::Layout(Schema& schema) : schema_m(schema) {
     int pos = static_cast<int>(sizeof(int));
-    for (const auto& name : schema.fields()) {
+    for (auto& name : schema.fields()) {
         offsets[name] = pos;
         pos += lengthInBytes(name);
     }

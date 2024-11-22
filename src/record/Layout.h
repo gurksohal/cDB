@@ -10,7 +10,7 @@
 class Layout {
 public:
     Layout() = default;
-    explicit Layout(const Schema& schema);
+    explicit Layout(Schema& schema);
     explicit Layout(Schema schema, const std::unordered_map<std::string, int>& offsets, int slot_size);
     auto schema() -> Schema;
     auto offset(const std::string& fld_name) -> int;

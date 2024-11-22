@@ -117,7 +117,7 @@ TEST(metadata, table_mgr_test) {
     tm.createTable("MyTable", sch, tx);
     Layout layout = tm.getLayout("MyTable", tx);
     int const size = layout.slotSize();
-    Schema const sch2 = layout.schema();
+    Schema sch2 = layout.schema();
     EXPECT_EQ(size, 21);
     EXPECT_EQ(sch2.fields().size(), 2);
     EXPECT_EQ(sch2.type(sch2.fields()[0]), Schema::INTEGER);

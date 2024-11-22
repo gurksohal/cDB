@@ -40,10 +40,10 @@ auto Predicate::isSatisfied(Scan& scan) -> bool {
     return true;
 }
 
-auto Predicate::reductionFactor() -> int {  // TODO: Add Plan
+auto Predicate::reductionFactor(Plan& p) -> int {
     int factor = 1;
     for (auto& t : terms) {
-        factor *= t.reductionFactor();  // TODO P,
+        factor *= t.reductionFactor(p);
     }
     return factor;
 }
@@ -62,7 +62,7 @@ auto Predicate::selectSubPred(const Schema& sch) -> std::unique_ptr<Predicate> {
     return std::make_unique<Predicate>(result);
 }
 
-auto Predicate::joinSubPred(const Schema& sch1, const Schema& sch2) -> std::unique_ptr<Predicate> {
+auto Predicate::joinSubPred(Schema& sch1, Schema& sch2) -> std::unique_ptr<Predicate> {
     Predicate result;
     Schema new_sch;
     new_sch.addAll(sch1);

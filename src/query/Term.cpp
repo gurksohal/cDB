@@ -20,32 +20,24 @@ auto Term::isSatisfied(Scan& scan) -> bool {
     return rhs_val == lhs_val;
 }
 
-auto Term::reductionFactor() -> int {  // TODO: After plan, pass in plan object
-    throw std::runtime_error("to impl" + std::to_string(static_cast<int>(lhs.isFldName())));
-    //    std::string lhs_name;
-    //    std::string rhs_name;
-    //    if (lhs.isFieldName() && rhs.isFieldName()) {
-    //        lhs_name = lhs.asFieldName();
-    //        rhs_name = rhs.asFieldName();
-    //        return std::max(p.distinctValues(lhsName),
-    //                        p.distinctValues(rhsName));
-    //    }
-    //
-    //    if (lhs.isFieldName()) {
-    //        lhs_name = lhs.asFieldName();
-    //        return p.distinctValues(lhs_name);
-    //    }
-    //
-    //    if (rhs.isFieldName()) {
-    //        rhs_name = rhs.asFieldName();
-    //        return p.distinctValues(rhs_name);
-    //    }
-    //
-    //    if (lhs.asConstant() == rhs.asConstant()) {
-    //        return -1;
-    //    }
-    //
-    //    return INT_MAX;
+auto Term::reductionFactor(Plan& p) -> int {
+    if (lhs.isFldName() && rhs.isFldName()) {
+        return std::max(p.distinctValues(), p.distinctValues());
+    }
+
+    if (lhs.isFldName()) {
+        return p.distinctValues();
+    }
+
+    if (rhs.isFldName()) {
+        return p.distinctValues();
+    }
+
+    if (lhs.asConstant() == rhs.asConstant()) {
+        return -1;
+    }
+
+    return INT_MAX;
 }
 
 auto Term::equateWithConstant(const std::string& fld_name) -> std::unique_ptr<Constant> {

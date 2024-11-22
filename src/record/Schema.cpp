@@ -23,13 +23,13 @@ auto Schema::add(const std::string& fld_name, const Schema& sch) -> void {
     addField(fld_name, type, length);
 }
 
-auto Schema::addAll(const Schema& sch) -> void {
-    for (const auto& name : sch.fields()) {
+auto Schema::addAll(Schema& sch) -> void {
+    for (auto& name : sch.fields()) {
         add(name, sch);
     }
 }
 
-auto Schema::fields() const -> const std::vector<std::string>& {
+auto Schema::fields() -> std::vector<std::string>& {
     return all_fields;
 }
 

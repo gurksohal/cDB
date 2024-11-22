@@ -8,6 +8,7 @@
 #include <memory>
 #include <ostream>
 
+#include "../plan/Plan.h"
 #include "../record/Schema.h"
 #include "Expression.h"
 #include "Scan.h"
@@ -16,7 +17,7 @@ class Term {
 public:
     Term(Expression left, Expression right);
     auto isSatisfied(Scan& scan) -> bool;
-    auto reductionFactor() -> int;  // TODO: After plan
+    auto reductionFactor(Plan& p) -> int;
     auto equateWithConstant(const std::string& fld_name) -> std::unique_ptr<Constant>;
     auto equateWithField(const std::string& fld_name) -> std::string;
     auto appliesTo(const Schema& sch) -> bool;

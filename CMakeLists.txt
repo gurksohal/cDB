@@ -94,6 +94,27 @@ add_library(cDB_lib
         src/parse/Parser.cpp
         src/parse/Parser.h
         src/parse/PredParser.h
+        src/plan/QueryPlanner.h
+        src/plan/Plan.h
+        src/plan/TablePlan.cpp
+        src/plan/TablePlan.h
+        src/plan/SelectPlan.cpp
+        src/plan/SelectPlan.h
+        src/plan/ProjectPlan.cpp
+        src/plan/ProjectPlan.h
+        src/plan/ProductPlan.cpp
+        src/plan/ProductPlan.h
+        src/plan/OptimizedProductPlan.cpp
+        src/plan/OptimizedProductPlan.h
+        src/plan/BasicQueryPlanner.cpp
+        src/plan/BasicQueryPlanner.h
+        src/plan/BetterQueryPlanner.cpp
+        src/plan/BetterQueryPlanner.h
+        src/plan/UpdatePlanner.h
+        src/plan/Planner.cpp
+        src/plan/Planner.h
+        src/plan/BasicUpdatePlanner.cpp
+        src/plan/BasicUpdatePlanner.h
 )
 
 # single main file for now, scratchpad

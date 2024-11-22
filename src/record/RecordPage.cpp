@@ -39,8 +39,8 @@ auto RecordPage::format() -> void {
     int slot = 0;
     while (isValidSlot(slot)) {
         tx->setInt(blk, offset(slot), EMPTY, false);
-        const auto &sch = layout.schema();
-        for (const auto &name : sch.fields()) {
+        auto sch = layout.schema();
+        for (auto &name : sch.fields()) {
             int const fld_pos = offset(slot) + layout.offset(name);
             if (sch.type(name) == Schema::INTEGER) {
                 tx->setInt(blk, fld_pos, 0, false);

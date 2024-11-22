@@ -1,4 +1,4 @@
-10. Planning
+10. Planning - NEED TESTS
 11. xxxxxxxxx
 12. Indexing (Update IndexInfo metadata)
 13. Materialization and sorting

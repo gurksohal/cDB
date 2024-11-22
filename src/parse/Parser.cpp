@@ -193,7 +193,7 @@ auto Parser::fieldDefs() -> Schema {
     Schema schema = fieldDef();
     while (lex.matchDelim(',')) {
         lex.eatDelim(',');
-        Schema const schema2 = fieldDef();
+        Schema schema2 = fieldDef();
         schema.addAll(schema2);
     }
     return schema;

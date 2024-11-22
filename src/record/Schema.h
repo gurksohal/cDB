@@ -24,8 +24,8 @@ public:
     auto addIntField(const std::string& fld_name) -> void;
     auto addStringField(const std::string& fld_name, int length) -> void;
     auto add(const std::string& fld_name, const Schema& sch) -> void;
-    auto addAll(const Schema& sch) -> void;
-    auto fields() const -> const std::vector<std::string>&;
+    auto addAll(Schema& sch) -> void;
+    auto fields() -> std::vector<std::string>&;
     auto hasField(const std::string& fld_name) const -> bool;
     auto type(const std::string& fld_name) const -> int;
     auto length(const std::string& fld_name) const -> int;
