@@ -34,3 +34,33 @@ auto Constant::asInt() const -> int {
 auto Constant::asString() -> std::string {
     return s_val;
 }
+
+auto Constant::hashCode() -> int {
+    if (s_val.empty()) {
+        return static_cast<int>(std::hash<int> {}(i_val));
+    }
+
+    return static_cast<int>(std::hash<std::string> {}(s_val));
+}
+
+auto Constant::operator<(const Constant& rhs) const -> bool {
+    if (s_val < rhs.s_val) {
+        return true;
+    }
+    if (rhs.s_val < s_val) {
+        return false;
+    }
+    return i_val < rhs.i_val;
+}
+
+auto Constant::operator>(const Constant& rhs) const -> bool {
+    return rhs < *this;
+}
+
+auto Constant::operator<=(const Constant& rhs) const -> bool {
+    return !(rhs < *this);
+}
+
+auto Constant::operator>=(const Constant& rhs) const -> bool {
+    return !(*this < rhs);
+}

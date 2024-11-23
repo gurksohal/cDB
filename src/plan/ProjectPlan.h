@@ -9,7 +9,7 @@
 
 class ProjectPlan : public Plan {
 public:
-    ProjectPlan(std::shared_ptr<Plan> p, std::vector<std::string>& fld_list);
+    ProjectPlan(const std::shared_ptr<Plan>& p, std::vector<std::string>& fld_list);
     auto open() -> std::shared_ptr<Scan> override;
     auto blocksAccessed() -> int override;
     auto recordsOutput() -> int override;

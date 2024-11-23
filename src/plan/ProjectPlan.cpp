@@ -6,7 +6,7 @@
 
 #include "../query/ProjectScan.h"
 
-ProjectPlan::ProjectPlan(std::shared_ptr<Plan> p, std::vector<std::string> &fld_list) : p(p) {
+ProjectPlan::ProjectPlan(const std::shared_ptr<Plan> &p, std::vector<std::string> &fld_list) : p(p) {
     for (auto &f : fld_list) {
         sch.add(f, p->schema());
     }

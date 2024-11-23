@@ -99,14 +99,18 @@ auto TableScan::getRid() -> RID {
 }
 
 auto TableScan::moveToBlock(int blk_num) -> void {
-    close();
+    if (!rp.block().filename().empty()) {
+        tx->unpin(rp.block());
+    }
     BlockId const block_id {filename, blk_num};
     rp = RecordPage(tx, block_id, layout);
     current_slot = -1;
 }
 
 auto TableScan::moveToNewBlock() -> void {
-    close();
+    if (!rp.block().filename().empty()) {
+        tx->unpin(rp.block());
+    }
     BlockId const block_id = tx->append(filename);
     rp = RecordPage(tx, block_id, layout);
     rp.format();

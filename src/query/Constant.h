@@ -16,7 +16,12 @@ public:
     auto asString() -> std::string;
     auto operator==(const Constant& rhs) const -> bool;
     auto operator!=(const Constant& rhs) const -> bool;
+    auto operator<(const Constant& rhs) const -> bool;
+    auto operator>(const Constant& rhs) const -> bool;
+    auto operator<=(const Constant& rhs) const -> bool;
+    auto operator>=(const Constant& rhs) const -> bool;
     friend auto operator<<(std::ostream& os, const Constant& constant) -> std::ostream&;
+    auto hashCode() -> int;
 
 private:
     std::string s_val;

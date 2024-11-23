@@ -4,12 +4,14 @@
 
 #include "Predicate.h"
 
+#include <utility>
+
 auto operator<<(std::ostream& os, const Predicate& predicate) -> std::ostream& {
     if (predicate.terms.empty()) {
         os << "";
     } else {
         bool first = true;
-        for (auto i : predicate.terms) {
+        for (const auto& i : predicate.terms) {
             if (first) {
                 first = false;
                 os << i;
@@ -23,7 +25,7 @@ auto operator<<(std::ostream& os, const Predicate& predicate) -> std::ostream& {
 
 Predicate::Predicate() = default;
 
-Predicate::Predicate(Term t) : terms({t}) {}
+Predicate::Predicate(Term t) : terms({std::move(t)}) {}
 
 auto Predicate::conjoinWith(Predicate& pred) -> void {
     for (auto& t : pred.terms) {

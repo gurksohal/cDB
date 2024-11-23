@@ -128,6 +128,30 @@ add_library(cDB_lib
         src/index/planner/IndexSelectPlan.h
         src/index/planner/IndexUpdatePlanner.cpp
         src/index/planner/IndexUpdatePlanner.h
+        src/materialize/AggregationFn.h
+        src/materialize/CountFn.cpp
+        src/materialize/CountFn.h
+        src/materialize/GroupByPlan.cpp
+        src/materialize/GroupByPlan.h
+        src/materialize/GroupByScan.cpp
+        src/materialize/GroupByScan.h
+        src/materialize/GroupValue.cpp
+        src/materialize/GroupValue.h
+        src/materialize/MaterializePlan.cpp
+        src/materialize/MaterializePlan.h
+        src/materialize/TempTable.cpp
+        src/materialize/TempTable.h
+        src/materialize/MaxFn.cpp
+        src/materialize/MaxFn.h
+        src/materialize/MergeJoinPlan.cpp
+        src/materialize/MergeJoinPlan.h
+        src/materialize/MergeJoinScan.cpp
+        src/materialize/MergeJoinScan.h
+        src/materialize/RecordComparator.h
+        src/materialize/SortPlan.cpp
+        src/materialize/SortPlan.h
+        src/materialize/SortScan.cpp
+        src/materialize/SortScan.h
 )
 
 # single main file for now, scratchpad
