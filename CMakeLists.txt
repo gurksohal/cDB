@@ -115,6 +115,19 @@ add_library(cDB_lib
         src/plan/Planner.h
         src/plan/BasicUpdatePlanner.cpp
         src/plan/BasicUpdatePlanner.h
+        src/index/Index.h
+        src/index/hash/HashIndex.cpp
+        src/index/hash/HashIndex.h
+        src/index/planner/IndexJoinPlan.cpp
+        src/index/planner/IndexJoinPlan.h
+        src/index/query/IndexJoinScan.cpp
+        src/index/query/IndexJoinScan.h
+        src/index/query/IndexSelectScan.cpp
+        src/index/query/IndexSelectScan.h
+        src/index/planner/IndexSelectPlan.cpp
+        src/index/planner/IndexSelectPlan.h
+        src/index/planner/IndexUpdatePlanner.cpp
+        src/index/planner/IndexUpdatePlanner.h
 )
 
 # single main file for now, scratchpad

@@ -7,6 +7,7 @@
 
 #include <string>
 
+#include "../index/Index.h"
 #include "../record/Layout.h"
 #include "../record/Schema.h"
 #include "../tx/Transaction.h"
@@ -16,7 +17,7 @@ class IndexInfo {
 public:
     IndexInfo() = default;
     IndexInfo(std::string name, std::string fld, Schema tbl_schema, Transaction* tx, StatInfo si);
-    auto open() -> void;  // TODO: return Index
+    auto open() -> std::shared_ptr<Index>;
     auto blocksAccessed() -> int;
     auto recordsOutput() -> int;
     auto distinctValues(const std::string& fld) -> int;

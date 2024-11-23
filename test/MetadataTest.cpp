@@ -90,13 +90,13 @@ TEST(metadata, metadata_mgr_test) {  // NOLINT
     auto idx_map = mdm.getIndexInfo("MyTable", tx);
 
     IndexInfo ii = idx_map["A"];
-    // EXPECT_EQ(ii.blocksAccessed(), 0); //TODO: uncomment after index
+    EXPECT_EQ(ii.blocksAccessed(), 0);
     EXPECT_EQ(ii.recordsOutput(), 2);
     EXPECT_EQ(ii.distinctValues("A"), 1);
     EXPECT_EQ(ii.distinctValues("B"), 17);
 
     ii = idx_map["B"];
-    // EXPECT_EQ(ii.blocksAccessed(), 0); //TODO: uncomment after index
+    EXPECT_EQ(ii.blocksAccessed(), 0);
     EXPECT_EQ(ii.recordsOutput(), 2);
     EXPECT_EQ(ii.distinctValues("A"), 17);
     EXPECT_EQ(ii.distinctValues("B"), 1);

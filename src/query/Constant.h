@@ -19,8 +19,8 @@ public:
     friend auto operator<<(std::ostream& os, const Constant& constant) -> std::ostream&;
 
 private:
-    int i_val;
     std::string s_val;
+    int i_val;
 };
 
 #endif  // CDB_CONSTANT_H

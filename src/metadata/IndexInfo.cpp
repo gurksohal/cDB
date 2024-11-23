@@ -6,6 +6,8 @@
 
 #include <utility>
 
+#include "../index/hash/HashIndex.h"
+
 IndexInfo::IndexInfo(std::string name, std::string fld, Schema tbl_schema, Transaction *tx, StatInfo si)
     : idx_name(std::move(name)),
       fld_name(std::move(fld)),
@@ -14,17 +16,15 @@ IndexInfo::IndexInfo(std::string name, std::string fld, Schema tbl_schema, Trans
       idx_layout(createIdxLayout()),
       si(si) {}
 
-auto IndexInfo::open() -> void {
-    auto s = fld_name;
-    // TODO: after index
-    throw std::runtime_error("to implement after index: " + s);
+auto IndexInfo::open() -> std::shared_ptr<Index> {
+    std::shared_ptr<Index> ret = std::make_shared<HashIndex>(tx, idx_name, idx_layout);
+    return ret;
 }
 
 auto IndexInfo::blocksAccessed() -> int {
     int const rpb = tx->blockSize() / idx_layout.slotSize();
     int const num_blocks = si.recordsOutput() / rpb;
-    // TODO: after index
-    throw std::runtime_error("to implement after index" + std::to_string(num_blocks));
+    return HashIndex::searchCost(num_blocks);
 }
 
 auto IndexInfo::recordsOutput() -> int {

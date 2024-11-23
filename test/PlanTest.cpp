@@ -79,6 +79,7 @@ TEST(plan, planner1_test) {
     EXPECT_EQ(count, 1);
     s->close();
     tx.commit();
+    cleanUp();
 }
 
 TEST(plan, planner2_test) {
@@ -125,4 +126,5 @@ TEST(plan, planner2_test) {
     EXPECT_EQ(count, 200);
     s->close();
     tx.commit();
+    cleanUp();
 }
