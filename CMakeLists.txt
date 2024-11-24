@@ -152,6 +152,14 @@ add_library(cDB_lib
         src/materialize/SortPlan.h
         src/materialize/SortScan.cpp
         src/materialize/SortScan.h
+        src/multibuffer/BufferNeeds.cpp
+        src/multibuffer/BufferNeeds.h
+        src/multibuffer/ChunkScan.cpp
+        src/multibuffer/ChunkScan.h
+        src/multibuffer/MultiBufferProductPlan.cpp
+        src/multibuffer/MultiBufferProductPlan.h
+        src/multibuffer/MultiBufferProductScan.cpp
+        src/multibuffer/MultiBufferProductScan.h
 )
 
 # single main file for now, scratchpad

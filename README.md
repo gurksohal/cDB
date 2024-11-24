@@ -1,4 +1,3 @@
-14. Effective Buffer Util
 15. Query opt
 
 
