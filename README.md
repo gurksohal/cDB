@@ -1,4 +1,3 @@
-15. Query opt
-
+16. server?
 
 12. Indexing - missing btree

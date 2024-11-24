@@ -160,6 +160,10 @@ add_library(cDB_lib
         src/multibuffer/MultiBufferProductPlan.h
         src/multibuffer/MultiBufferProductScan.cpp
         src/multibuffer/MultiBufferProductScan.h
+        src/opt/HeuristicQueryPlanner.cpp
+        src/opt/HeuristicQueryPlanner.h
+        src/opt/TablePlanner.cpp
+        src/opt/TablePlanner.h
 )
 
 # single main file for now, scratchpad

@@ -49,7 +49,7 @@ void MultiBufferProductScan::beforeFirst() {
     useNextChunk();
 }
 
-bool MultiBufferProductScan::next() {
+auto MultiBufferProductScan::next() -> bool {
     while (!prod_scan->next()) {
         if (!useNextChunk()) {
             return false;
