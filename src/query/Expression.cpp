@@ -21,7 +21,7 @@ auto Expression::asConstant() -> Constant {
 
 Expression::Expression(Constant val) : val(std::move(val)) {}
 
-Expression::Expression(std::string fld_name) : fld_name(std::move(fld_name)), val(-1) {}
+Expression::Expression(std::string fld_name) : val(-1), fld_name(std::move(fld_name)) {}
 
 auto Expression::evaluate(Scan& s) -> Constant {
     if (!fld_name.empty()) {

@@ -13,9 +13,9 @@
 MultiBufferProductScan::MultiBufferProductScan(Transaction *tx, std::shared_ptr<Scan> lhs_scan,
                                                const std::string &tbl_name, Layout layout)
     : tx(tx),
+      file_name(tbl_name + ".tbl"),
       lhs_scan(std::move(lhs_scan)),
       layout(std::move(layout)),
-      file_name(tbl_name + ".tbl"),
       chunk_size(0),
       next_blk_num(0) {
     auto s = tx->size(file_name);

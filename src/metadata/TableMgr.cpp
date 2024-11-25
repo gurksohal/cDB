@@ -6,6 +6,8 @@
 
 #include "../record/TableScan.h"
 
+int const TableMgr::MAX_NAME = 16;
+
 TableMgr::TableMgr(bool is_new, Transaction& tx) {
     Schema tcat_schema;
     tcat_schema.addStringField("tblname", MAX_NAME);

@@ -60,7 +60,7 @@ auto ChunkScan::hasField(const std::string& fld_name) -> bool {
 }
 
 void ChunkScan::close() {
-    for (int i = 0; i < buffs.size(); i++) {
+    for (int i = 0; i < static_cast<int>(buffs.size()); i++) {
         BlockId blk(file_name, start_b_num + i);
         tx->unpin(blk);
     }

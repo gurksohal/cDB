@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 project(cDB)
 
 set(CMAKE_CXX_STANDARD 20)
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fsanitize=address,undefined -g")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fsanitize=address,undefined -g")
 include(FetchContent)
 FetchContent_Declare(
         googletest
@@ -164,12 +164,19 @@ add_library(cDB_lib
         src/opt/HeuristicQueryPlanner.h
         src/opt/TablePlanner.cpp
         src/opt/TablePlanner.h
+        src/server/CDB.cpp
+        src/server/CDB.h
 )
 
-# single main file for now, scratchpad
+# cli
 add_executable(cDB_main src/main.cpp
 )
 target_link_libraries(cDB_main cDB_lib)
+
+# create student db
+add_executable(cDB_studentDB
+        src/CreateStudentDB.cpp)
+target_link_libraries(cDB_studentDB cDB_lib)
 
 # All tests
 add_executable(cDB_tests

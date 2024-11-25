@@ -12,9 +12,9 @@
 #include "../plan/SelectPlan.h"
 
 TablePlanner::TablePlanner(const std::string& tbl_name, Predicate my_pred, Transaction* tx, MetadataMgr* mdm)
-    : my_pred(std::move(my_pred)),
+    : my_plan(tx, tbl_name, mdm),
+      my_pred(std::move(my_pred)),
       tx(tx),
-      my_plan(tx, tbl_name, mdm),
       my_schema(my_plan.schema()),
       indexes(mdm->getIndexInfo(tbl_name, *tx)) {}
 

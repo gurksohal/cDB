@@ -8,6 +8,9 @@
 
 RecoveryManager::RecoveryManager(Transaction *tx, int tx_num, LogManager *lm, BufferManager *bm)
     : lm(lm), bm(bm), tx(tx), tx_num(tx_num) {
+    if (tx_num == -1) {
+        return;
+    }
     StartRecord::writeToLog(*lm, tx_num);
 }
 

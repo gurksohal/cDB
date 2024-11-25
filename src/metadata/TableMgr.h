@@ -10,7 +10,7 @@
 
 class TableMgr {
 public:
-    static int const MAX_NAME = 16;
+    static int const MAX_NAME;
     TableMgr(bool is_new, Transaction& tx);
     auto createTable(const std::string& tbl_name, Schema& schema, Transaction& tx) -> void;
     auto getLayout(const std::string& tbl_name, Transaction& tx) -> Layout;

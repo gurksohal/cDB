@@ -8,7 +8,7 @@
 
 IndexJoinScan::IndexJoinScan(std::shared_ptr<Scan> lhs, std::shared_ptr<Index> idx, std::string join_field,
                              std::shared_ptr<TableScan> rhs)
-    : lhs(std::move(lhs)), idx(std::move(idx)), rhs(std::move(rhs)), join_field(std::move(join_field)) {
+    : lhs(std::move(lhs)), idx(std::move(idx)), join_field(std::move(join_field)), rhs(std::move(rhs)) {
     this->lhs->beforeFirst();
     this->lhs->next();
     resetIndex();

@@ -10,7 +10,7 @@
 #include "TempTable.h"
 
 MaterializePlan::MaterializePlan(Transaction* tx, std::shared_ptr<Plan> src_plan)
-    : tx(tx), src_plan(std::move(src_plan)) {}
+    : src_plan(std::move(src_plan)), tx(tx) {}
 
 auto MaterializePlan::open() -> std::shared_ptr<Scan> {
     auto sch = src_plan->schema();

@@ -33,7 +33,7 @@ auto MetadataMgr::createIndex(const std::string& idx_name, const std::string& tb
 
 auto MetadataMgr::getIndexInfo(const std::string& tbl_name,
                                Transaction& tx) -> std::unordered_map<std::string, IndexInfo> {
-    return std::move(idx_mgr.getIndexInfo(tbl_name, tx));
+    return idx_mgr.getIndexInfo(tbl_name, tx);
 }
 
 auto MetadataMgr::getStatInfo(const std::string& tbl_name, Layout& layout, Transaction& tx) -> StatInfo {
