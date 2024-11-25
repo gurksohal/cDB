@@ -20,13 +20,13 @@ enable_testing()
 add_library(cDB_lib ${LIB_SOURCES})
 
 # cli
-add_executable(cDB_main src/main.cpp)
-target_link_libraries(cDB_main cDB_lib)
+add_executable(cdb src/main.cpp)
+target_link_libraries(cdb cDB_lib)
 
 # create student db
-add_executable(cDB_studentDB
+add_executable(createDB
         src/CreateStudentDB.cpp)
-target_link_libraries(cDB_studentDB cDB_lib)
+target_link_libraries(createDB cDB_lib)
 
 # All tests
 add_executable(cDB_tests ${TEST_SOURCES})
